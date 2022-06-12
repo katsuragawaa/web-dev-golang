@@ -5,8 +5,6 @@ import (
 	"math"
 )
 
-// HANDS ON 1
-
 // create a type square
 type square struct {
 	side float64
