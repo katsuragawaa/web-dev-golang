@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friends</title>
+</head>
+<body>
+    {{range .Wisdom}}
+        {{uppercase .Name}}
+    {{end}}
+
+    {{range .Wisdom}}
+        {{firstThree .Name}}
+    {{end}}
+</body>
+</html>
