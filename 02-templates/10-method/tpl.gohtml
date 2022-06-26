@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Composition</title>
+</head>
+<body>
+Attributes
+{{.Name}}
+{{.Age}}
+
+Methods
+{{.SomeProcessing}}
+{{.AgeDbl}}
+
+Methods with args (both are the same)
+{{.AgeDbl | .TakesArg}}
+{{.TakesArg .AgeDbl}}
+</body>
+</html>
