@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friends</title>
+</head>
+<body>
+<ul>
+    {{range .Wisdom}}
+        <li>{{.Name}} once said {{.Motto}}</li>
+    {{end}}
+</ul>
+<ul>
+    {{range .Transport}}
+        <li>{{.Model}} has {{.Doors}} doors</li>
+    {{end}}
+</ul>
+</body>
+</html>
