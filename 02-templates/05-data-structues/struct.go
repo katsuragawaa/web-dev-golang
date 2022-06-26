@@ -23,7 +23,14 @@ func main() {
 		"the belief of no beliefs",
 	}
 
+	println("struct")
 	err := structTemplates.ExecuteTemplate(os.Stdout, "struct.gohtml", buddha)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	println("\n\nstruct with variables")
+	err = structTemplates.ExecuteTemplate(os.Stdout, "struct-with-variable.gohtml", buddha)
 	if err != nil {
 		log.Fatal(err)
 	}
