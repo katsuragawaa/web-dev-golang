@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predefined global functions</title>
+</head>
+
+<body>
+Loop all
+{{range .}}
+    {{.}}
+{{end}}
+
+With admin
+{{range .}}
+    {{if .Admin}}
+        {{.}}
+    {{end}}
+{{end}}
+
+With name and admin
+{{range .}}
+    {{if and .Name .Admin}}
+        {{.}}
+    {{end}}
+{{end}}
+
+</body>
+</html>
