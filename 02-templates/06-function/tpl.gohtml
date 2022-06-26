@@ -5,12 +5,16 @@
     <title>Friends</title>
 </head>
 <body>
-    {{range .Wisdom}}
-        {{uppercase .Name}}
-    {{end}}
+{{range .Wisdom}}
+    {{uppercase .Name}}
+{{end}}
 
-    {{range .Wisdom}}
-        {{firstThree .Name}}
-    {{end}}
+{{range .Wisdom}}
+    {{firstThree .Name}}
+{{end}}
+
+raw time: {{.Time}}
+formatted time: {{fdate .Time}}
+same but pipeline: {{.Time | fdate}}
 </body>
 </html>

@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 	"text/template"
+	"time"
 )
 
 type sage struct {
@@ -12,21 +13,26 @@ type sage struct {
 	Motto string
 }
 
-var fm = template.FuncMap{
-	"uppercase":  strings.ToUpper,
-	"firstThree": firstThree,
-}
-
 var tpl *template.Template
-
-func init() {
-	// need to attach functions before parsing the file
-	tpl = template.Must(template.New("").Funcs(fm).ParseFiles("tpl.gohtml"))
-}
 
 func firstThree(str string) string {
 	cleanStr := strings.TrimSpace(str)
 	return cleanStr[:3]
+}
+
+func monthDayYear(t time.Time) string {
+	return t.Format("01-02-2006")
+}
+
+var fm = template.FuncMap{
+	"uppercase":  strings.ToUpper,
+	"firstThree": firstThree,
+	"fdate":      monthDayYear,
+}
+
+func init() {
+	// need to attach functions before parsing the file
+	tpl = template.Must(template.New("").Funcs(fm).ParseFiles("tpl.gohtml"))
 }
 
 func main() {
@@ -40,9 +46,15 @@ func main() {
 		"be the change",
 	}
 
+	currentTime := time.Now()
+
 	data := struct {
 		Wisdom []sage
-	}{[]sage{buddha, gandhi}}
+		Time   time.Time
+	}{
+		[]sage{buddha, gandhi},
+		currentTime,
+	}
 
 	err := tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", data)
 	if err != nil {
