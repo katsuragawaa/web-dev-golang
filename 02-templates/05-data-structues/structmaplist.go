@@ -18,11 +18,6 @@ type car struct {
 	Doors int
 }
 
-type items struct {
-	Wisdom    []sage3
-	Transport []car
-}
-
 func init() {
 	smlTemplate = template.Must(template.ParseGlob("templates/*"))
 }
@@ -57,7 +52,10 @@ func main() {
 
 	cars := []car{toyota, mobi}
 
-	data := items{sages, cars}
+	data := struct {
+		Wisdom    []sage3
+		Transport []car
+	}{sages, cars}
 
 	err := smlTemplate.ExecuteTemplate(os.Stdout, "struct-map-list.gohtml", data)
 	if err != nil {
